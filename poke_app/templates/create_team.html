@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('main.create_team') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Enter a book</legend>
+
+        {{ form.team_name.label }}
+        {{ form.team_name }}
+        <ul>
+        {% for error in form.team_name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.trainer.label }}
+        {{ form.trainer }}
+        <ul>
+        {% for error in form.trainer.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.pokemon.label }}
+        {{ form.pokemon }}
+        <ul>
+        {% for error in form.pokemon.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>  
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

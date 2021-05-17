@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>
+Welcome to {{ user.name }}'s profile.
+</p>
+
+<!-- TODO: Display the user's actual favorites here -->
+
+<p>
+    Here are the pokemon in {{ trainer.name }}'s team!:
+
+    <ul>
+        {% for pokemon in pokemon.party %}
+        <li>{{ pokemon.party }}/li>
+        {% endfor %}
+    </ul>
+</p>
+
+{% endblock %}

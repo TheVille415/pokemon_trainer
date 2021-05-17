@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Add a Pokemon!</p>
+
+<form method="POST" action="{{ url_for('main.create_pokemon') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Enter a Pokemon Name</legend>
+        {{ form.index_number.label }}
+        {{ form.index_number }}
+        <ul>
+        {% for error in form.index_number.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.name.label }}
+        {{ form.name }}
+        <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.stats.label }}
+        {{ form.stats }}
+        <ul>
+        {% for error in form.stats.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.type_1.label }}
+        {{ form.type_1 }}
+        <ul>
+        {% for error in form.type_1.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.type_2.label }}
+        {{ form.type_2 }}
+        <ul>
+        {% for error in form.type_2.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

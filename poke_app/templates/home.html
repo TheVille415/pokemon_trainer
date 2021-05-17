@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Trainer App</h2>
+
+<h2>Pokemon</h2>
+<ul>
+    {% for Pokemon in all_pokemon %}
+        <li>Pokemon ID: {{ Pokemon.index_number }} or better known as {{ Pokemon.name }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Current Trainers</h2>
+<ul>
+    {% for trainer in all_trainers %}
+    <!-- I want to make these names link to the users profile. -->
+        <!-- <li><a href="/profile_trainer/{{ trainer.username }}"> {{ trainer.username }}</a></li> -->
+        <li>Trainer: {{ trainer.username }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href="/create_trainer">+ New Trainer</a>
+</p>
+
+{% endblock %}
