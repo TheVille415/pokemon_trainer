@@ -14,19 +14,11 @@
             <li class="error">{{ error }}</li>
         {% endfor %}
         </ul>
-        
-        {{ form.trainer.label }}
-        {{ form.trainer }}
+
+        {{ form.pokemon_team.label }}
+        {{ form.pokemon_team }}
         <ul>
-        {% for error in form.trainer.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.pokemon.label }}
-        {{ form.pokemon }}
-        <ul>
-        {% for error in form.pokemon.errors %}
+        {% for error in form.pokemon_team.errors %}
             <li class="error">{{ error }}</li>
         {% endfor %}
         </ul>  

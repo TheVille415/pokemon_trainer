@@ -9,8 +9,7 @@ class PokeTeamForm(FlaskForm):
     """Form to create a Pokemon Team."""
     team_name = StringField('Team Name',
         validators=[DataRequired(), Length(min=3, max=80)])
-    trainer = QuerySelectField('Trainer',query_factory=lambda: User.query, allow_blank=False)
-    pokemon = QuerySelectMultipleField('Pokemon',
+    pokemon_team = QuerySelectMultipleField('Pokemon',
         query_factory=lambda: Pokemon.query)
     submit = SubmitField('Submit')
 

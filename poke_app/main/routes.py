@@ -31,14 +31,14 @@ def create_team():
     if form.validate_on_submit(): 
         new_team = PokeTeam(
             team_name=form.team_name.data,
-            trainer=form.trainer.data,
-            pokemon=form.pokemon.data
+            trainer_id=current_user.id,
+            pokemon_team=form.pokemon_team.data
         )
         db.session.add(new_team)
         db.session.commit()
 
-        flash('Team has been created successfully.')
-        return redirect(url_for('main.book_detail', book_id=new_team.id))
+        flash('Pokemon added to team successfully.')
+        return redirect(url_for('main.homepage'))
     return render_template('create_team.html', form=form)
 
 
@@ -61,14 +61,15 @@ def create_trainer():
     return render_template('create_trainer.html', form=form)
 
 # Trainer display page
-@main.route('/profile_traienr/<username>')
-def profile(username):
-    user = User.query.filter_by(username=username).one()
-    return render_template('profile_trainer.html', user=user)
+# @main.route('/profile_traienr/<username>')
+# def profile(username):
+#     user = User.query.filter_by(username=username).one()
+#     return render_template('profile_trainer.html', user=user)
 
 @main.route('/create_pokemon', methods=['GET', 'POST'])
 @login_required
 def create_pokemon():
+    # current_user = current user logged in
     form = PokemonForm()
     if form.validate_on_submit():
         new_pokemon = Pokemon(
@@ -77,6 +78,7 @@ def create_pokemon():
             stats=form.name.data,
             type_1=form.type_1.data,
             type_2=form.type_2.data,
+            trainer_id = current_user.id
         )
         db.session.add(new_pokemon)
         db.session.commit()
